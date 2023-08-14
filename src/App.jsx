@@ -7,6 +7,8 @@ import { styled } from "styled-components";
 const Main = styled.main`
   @media screen and (min-width: 800px) {
     display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 `;
 
