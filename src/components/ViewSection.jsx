@@ -4,15 +4,23 @@ import { styled } from "styled-components";
 
 /****************** STYLES ******************/
 
-const Styles = styled.section``;
+const Styles = styled.section`
+  padding: 1rem;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
 
 /****************** COMPONENTS ******************/
 
 const ViewSection = () => {
   return (
     <>
-      <Styles>ViewSection</Styles>
-      <Carousell />
+      <Styles>
+        ViewSection
+        <Carousell />
+      </Styles>
     </>
   );
 };
