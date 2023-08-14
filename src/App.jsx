@@ -1,7 +1,15 @@
+import NavSection from "./components/NavSection";
+import ViewSection from "./components/ViewSection";
+import ProductSection from "./components/ProductSection";
+
 function App() {
   return (
     <>
-      <main></main>
+      <NavSection />
+      <main>
+        <ViewSection />
+        <ProductSection />
+      </main>
     </>
   );
 }
