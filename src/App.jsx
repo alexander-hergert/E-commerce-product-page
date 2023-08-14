@@ -4,16 +4,21 @@ import ProductSection from "./components/ProductSection";
 import MobileViewSection from "./components/MobileViewSection";
 import { styled } from "styled-components";
 
+const Main = styled.main`
+  @media screen and (min-width: 800px) {
+    display: flex;
+  }
+`;
 
 function App() {
   return (
     <>
       <NavSection />
-      <main>
+      <Main>
         <MobileViewSection />
         <ViewSection />
         <ProductSection />
-      </main>
+      </Main>
     </>
   );
 }

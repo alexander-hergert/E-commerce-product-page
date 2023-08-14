@@ -11,7 +11,7 @@
   --black: hsl(0, 0%, 0%);
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -30,6 +30,10 @@ body {
 menu {
   padding: 0;
   list-style: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
