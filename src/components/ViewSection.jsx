@@ -11,7 +11,7 @@ const Styles = styled.section``;
 const ViewSection = () => {
   return (
     <>
-      <Styles>ViewSection</Styles>;
+      <Styles>ViewSection</Styles>
       <Carousell />
     </>
   );
