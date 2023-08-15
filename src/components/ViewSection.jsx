@@ -1,5 +1,4 @@
 import React from "react";
-import Carousell from "./Carousell";
 import { styled } from "styled-components";
 
 /****************** STYLES ******************/
@@ -10,6 +9,7 @@ const Styles = styled.section`
   img {
     width: 100%;
     border-radius: 10px;
+    cursor: pointer;
   }
 
   div {
@@ -18,6 +18,7 @@ const Styles = styled.section`
     justify-content: space-between;
     img {
       width: 20%;
+      cursor: pointer;
     }
   }
 
@@ -51,7 +52,6 @@ const ViewSection = () => {
             alt="thumbnail-4"
           />
         </div>
-        <Carousell />
       </Styles>
     </>
   );

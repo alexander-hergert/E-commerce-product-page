@@ -3,6 +3,7 @@ import ViewSection from "./components/ViewSection";
 import ProductSection from "./components/ProductSection";
 import MobileViewSection from "./components/MobileViewSection";
 import { styled } from "styled-components";
+import Caroussel from "./components/Caroussel";
 
 const Main = styled.main`
   @media screen and (min-width: 800px) {
@@ -17,6 +18,7 @@ function App() {
     <>
       <NavSection />
       <Main>
+        <Caroussel />
         <MobileViewSection />
         <ViewSection />
         <ProductSection />
