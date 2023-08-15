@@ -1,10 +1,10 @@
 import React from "react";
 import { styled } from "styled-components";
+import { useGlobalContext } from "../context";
 
 /****************** STYLES ******************/
 
 const Styles = styled.div`
-  display: none;
   position: absolute;
   width: 25rem;
   height: 30vh;
@@ -64,35 +64,40 @@ const Styles = styled.div`
 /****************** COMPONENTS ******************/
 
 const Cart = () => {
+
+  const { isCartOpen } = useGlobalContext();
+
   return (
-    <Styles>
-      <div className="cart">Cart</div>
-      <div className="cart-container">
-        <div>
-          <div className="cart-infos">
-            <img
-              src="assets/images/image-product-1-thumbnail.jpg"
-              alt="thumbnail-1"
-            />
-            <div>
-              <p>Fall Limited Edition Sneakers</p>
-              <p>
-                {`$125.00 x ${3}`}
-                <span> $375.00</span>
-              </p>
-            </div>
-            <input
-              type="image"
-              src="assets/images/icon-delete.svg"
-              alt="delete-icon"
-            />
-          </div>
+    <>{isCartOpen &&
+      <Styles>
+        <div className="cart">Cart</div>
+        <div className="cart-container">
           <div>
-            <button>Checkout</button>
+            <div className="cart-infos">
+              <img
+                src="assets/images/image-product-1-thumbnail.jpg"
+                alt="thumbnail-1"
+              />
+              <div>
+                <p>Fall Limited Edition Sneakers</p>
+                <p>
+                  {`$125.00 x ${3}`}
+                  <span> $375.00</span>
+                </p>
+              </div>
+              <input
+                type="image"
+                src="assets/images/icon-delete.svg"
+                alt="delete-icon"
+              />
+            </div>
+            <div>
+              <button>Checkout</button>
+            </div>
           </div>
         </div>
-      </div>
-    </Styles>
+      </Styles>}
+    </>
   );
 };
 

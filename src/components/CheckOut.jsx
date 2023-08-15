@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
+import { useGlobalContext } from "../context";
 
 /****************** STYLES ******************/
 
@@ -44,10 +45,20 @@ const Styles = styled.div`
 /****************** COMPONENTS ******************/
 
 const CheckOut = () => {
+  const { isCartOpen, setIsCartOpen } = useGlobalContext();
+
+  const handleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
   return (
     <Styles>
       <div className="cart-container">
-        <input type="image" src="assets/images/icon-cart.svg" />
+        <input
+          type="image"
+          src="assets/images/icon-cart.svg"
+          onClick={handleCart}
+        />
         <div className="cart-symbol">3</div>
       </div>
       <img src="/assets/images/image-avatar.png" alt="avatar" />

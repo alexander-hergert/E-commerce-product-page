@@ -39,6 +39,7 @@ const NavSection = () => {
     setIsMenuOpen(true);
   };
 
+
   return (
     <Styles>
       <div className="left-nav-container">
@@ -54,7 +55,7 @@ const NavSection = () => {
         </div>
         <Links isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
       </div>
-      <CheckOut />
+      <CheckOut/>
     </Styles>
   );
 };
