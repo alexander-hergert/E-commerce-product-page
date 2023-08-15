@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Links from "./Links";
 import CheckOut from "./CheckOut";
 import { styled } from "styled-components";
@@ -33,18 +33,26 @@ const Styles = styled.nav`
 /****************** COMPONENTS ******************/
 
 const NavSection = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuOnClick = () => {
+    setIsMenuOpen(true);
+  };
+
   return (
     <Styles>
       <div className="left-nav-container">
         <div className="logo-container">
-          <img
+          <input
+            type="image"
             className="menu-button"
             src="/assets/images/icon-menu.svg"
             alt="menu-icon"
+            onClick={handleMenuOnClick}
           />
           <img src="/assets/images/logo.svg" alt="logo" />
         </div>
-        <Links />
+        <Links isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
       </div>
       <CheckOut />
     </Styles>
