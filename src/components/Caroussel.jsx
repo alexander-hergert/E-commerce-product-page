@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { styled } from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useGlobalContext } from "../context";
 /****************** STYLES ******************/
 
 const ModalOverlay = styled.div`
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -17,12 +17,19 @@ const ModalOverlay = styled.div`
 `;
 
 const Styles = styled.section`
-  display: none;
   position: absolute;
   width: 25%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  .close {
+    text-align: right;
+    img {
+      cursor: pointer;
+      width: 1rem;
+    }
+  }
 
   .slick-prev,
   .slick-next {
@@ -92,7 +99,23 @@ const Styles = styled.section`
 `;
 /****************** COMPONENT ******************/
 const Caroussel = () => {
+  const { isModal, setIsModal, activeTnNumber } = useGlobalContext();
   const baseUrl = "assets/images";
+
+  const sliderRef = useRef();
+
+  const handleClose = () => {
+    setIsModal(false);
+  };
+
+  useEffect(() => {
+    if (isModal && sliderRef.current) {
+      setTimeout(() => {
+        sliderRef.current.slickGoTo(activeTnNumber);
+      }, 100);
+    }
+  }, [isModal]);
+
   const settings = {
     customPaging: function (i) {
       return (
@@ -120,24 +143,35 @@ const Caroussel = () => {
   };
 
   return (
-    <ModalOverlay>
-      <Styles>
-        <Slider {...settings}>
-          <div>
-            <img src="assets/images/image-product-1.jpg" alt="product-1" />
-          </div>
-          <div>
-            <img src="assets/images/image-product-2.jpg" alt="product-2" />
-          </div>
-          <div>
-            <img src="assets/images/image-product-3.jpg" alt="product-3" />
-          </div>
-          <div>
-            <img src="assets/images/image-product-4.jpg" alt="product-4" />
-          </div>
-        </Slider>
-      </Styles>
-    </ModalOverlay>
+    <>
+      {isModal && (
+        <ModalOverlay>
+          <Styles>
+            <div className="close">
+              <img
+                src="assets/images/icon-close.svg"
+                alt="icon-close"
+                onClick={handleClose}
+              />
+            </div>
+            <Slider {...settings} ref={sliderRef}>
+              <div>
+                <img src="assets/images/image-product-1.jpg" alt="product-1" />
+              </div>
+              <div>
+                <img src="assets/images/image-product-2.jpg" alt="product-2" />
+              </div>
+              <div>
+                <img src="assets/images/image-product-3.jpg" alt="product-3" />
+              </div>
+              <div>
+                <img src="assets/images/image-product-4.jpg" alt="product-4" />
+              </div>
+            </Slider>
+          </Styles>
+        </ModalOverlay>
+      )}
+    </>
   );
 };
 
