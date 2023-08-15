@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
+import { useGlobalContext } from "../context";
 
 /****************** STYLES ******************/
 
@@ -51,6 +52,10 @@ const Styles = styled.section`
     background-color: hsl(223, 64%, 98%);
     padding: 0 1.5rem;
     border-radius: 10px;
+
+    p {
+      font-weight: bold;
+    }
   }
 
   .cart-button-container {
@@ -99,6 +104,30 @@ const Styles = styled.section`
 /****************** COMPONENTS ******************/
 
 const ProductSection = () => {
+  const { items, setItems, setIsInCart } = useGlobalContext();
+  const customerLimit = 5;
+
+  const handleDecrease = () => {
+    if (items > 1) {
+      setItems((prev) => prev - 1);
+    } else if (items === 1) {
+      setItems((prev) => prev - 1);
+      setIsInCart(false);
+    }
+  };
+
+  const handleIncrease = () => {
+    if (items < customerLimit) {
+      setItems((prev) => prev + 1);
+    }
+  };
+
+  const handleSendToCart = () => {
+    if (items > 0) {
+      setIsInCart(true);
+    }
+  };
+
   return (
     <Styles>
       <h2>Sneaker Company</h2>
@@ -122,15 +151,17 @@ const ProductSection = () => {
               type="image"
               src="assets/images/icon-minus.svg"
               alt="icon-minus"
+              onClick={handleDecrease}
             />
-            <p>0</p>
+            <p>{items}</p>
             <input
               type="image"
               src="assets/images/icon-plus.svg"
               alt="icon-plus"
+              onClick={handleIncrease}
             />
           </div>
-          <button className="cart-button-container">
+          <button className="cart-button-container" onClick={handleSendToCart}>
             <img src="assets/images/icon-cart.svg" alt="icon-cart" />
             <p> Add to cart</p>
           </button>

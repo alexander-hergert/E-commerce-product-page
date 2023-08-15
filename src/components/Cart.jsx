@@ -22,6 +22,14 @@ const Styles = styled.div`
     padding: 1.5rem 2rem;
   }
 
+  .empty-cart {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    color: hsl(219, 9%, 45%);
+  }
+
   img {
     width: 4rem;
     border-radius: 5px;
@@ -64,39 +72,53 @@ const Styles = styled.div`
 /****************** COMPONENTS ******************/
 
 const Cart = () => {
+  const { isCartOpen, items, setItems, isInCart, setIsInCart } =
+    useGlobalContext();
 
-  const { isCartOpen } = useGlobalContext();
+  const handleDelete = () => {
+    setItems(0);
+    setIsInCart(false);
+  };
 
   return (
-    <>{isCartOpen &&
-      <Styles>
-        <div className="cart">Cart</div>
-        <div className="cart-container">
-          <div>
-            <div className="cart-infos">
-              <img
-                src="assets/images/image-product-1-thumbnail.jpg"
-                alt="thumbnail-1"
-              />
+    <>
+      {isCartOpen && (
+        <Styles>
+          <div className="cart">Cart</div>
+          {isInCart === false ? (
+            <div className="empty-cart">
+              <p>Your cart is empty.</p>
+            </div>
+          ) : (
+            <div className="cart-container">
               <div>
-                <p>Fall Limited Edition Sneakers</p>
-                <p>
-                  {`$125.00 x ${3}`}
-                  <span> $375.00</span>
-                </p>
+                <div className="cart-infos">
+                  <img
+                    src="assets/images/image-product-1-thumbnail.jpg"
+                    alt="thumbnail-1"
+                  />
+                  <div>
+                    <p>Fall Limited Edition Sneakers</p>
+                    <p>
+                      {`$125.00 x ${items} `}
+                      <span>{`$${items * 125}`}</span>
+                    </p>
+                  </div>
+                  <input
+                    type="image"
+                    src="assets/images/icon-delete.svg"
+                    alt="delete-icon"
+                    onClick={handleDelete}
+                  />
+                </div>
+                <div>
+                  <button>Checkout</button>
+                </div>
               </div>
-              <input
-                type="image"
-                src="assets/images/icon-delete.svg"
-                alt="delete-icon"
-              />
             </div>
-            <div>
-              <button>Checkout</button>
-            </div>
-          </div>
-        </div>
-      </Styles>}
+          )}
+        </Styles>
+      )}
     </>
   );
 };

@@ -45,7 +45,7 @@ const Styles = styled.div`
 /****************** COMPONENTS ******************/
 
 const CheckOut = () => {
-  const { isCartOpen, setIsCartOpen } = useGlobalContext();
+  const { isCartOpen, setIsCartOpen, items, isInCart } = useGlobalContext();
 
   const handleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -59,7 +59,7 @@ const CheckOut = () => {
           src="assets/images/icon-cart.svg"
           onClick={handleCart}
         />
-        <div className="cart-symbol">3</div>
+        {items > 0 && isInCart && <div className="cart-symbol">{items}</div>}
       </div>
       <img src="/assets/images/image-avatar.png" alt="avatar" />
     </Styles>
