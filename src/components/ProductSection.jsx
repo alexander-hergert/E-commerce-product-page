@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import { useGlobalContext } from "../context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 /****************** STYLES ******************/
 
@@ -21,6 +23,10 @@ const Styles = styled.section`
   article {
     color: hsl(219, 9%, 45%);
     line-height: 1.5;
+  }
+
+  .stock {
+    font-weight: bold;
   }
 
   .price-outer-container {
@@ -115,14 +121,16 @@ const Styles = styled.section`
 /****************** COMPONENTS ******************/
 
 const ProductSection = () => {
-  const { items, setItems, setIsInCart } = useGlobalContext();
+  const { items, setItems, setIsInCart, stock, setStock } = useGlobalContext();
   const customerLimit = 5;
 
   const handleDecrease = () => {
     if (items > 1) {
       setItems((prev) => prev - 1);
+      setStock((prev) => prev + 1);
     } else if (items === 1) {
       setItems((prev) => prev - 1);
+      setStock((prev) => prev + 1);
       setIsInCart(false);
     }
   };
@@ -130,6 +138,9 @@ const ProductSection = () => {
   const handleIncrease = () => {
     if (items < customerLimit) {
       setItems((prev) => prev + 1);
+      setStock((prev) => prev - 1);
+    } else {
+      notify();
     }
   };
 
@@ -137,6 +148,23 @@ const ProductSection = () => {
     if (items > 0) {
       setIsInCart(true);
     }
+  };
+
+  const notify = () => {
+    toast.error(
+      "Sorry we are out of Stock. We can't add more into your cart at this time.",
+      {
+        toastId: "toast-id",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      }
+    );
   };
 
   return (
@@ -154,6 +182,9 @@ const ProductSection = () => {
           <p className="sale">50%</p>
         </div>
         <p className="previous-price">$250.00</p>
+        <p className="stock">
+          In stock <span>{stock}</span>
+        </p>
       </div>
       <div>
         <div className="buttons-container">
@@ -178,6 +209,7 @@ const ProductSection = () => {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </Styles>
   );
 };

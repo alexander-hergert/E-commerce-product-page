@@ -76,12 +76,13 @@ const Styles = styled.div`
 /****************** COMPONENTS ******************/
 
 const Cart = () => {
-  const { isCartOpen, items, setItems, isInCart, setIsInCart } =
+  const { isCartOpen, items, setItems, isInCart, setIsInCart, setStock } =
     useGlobalContext();
 
   const handleDelete = () => {
     setItems(0);
     setIsInCart(false);
+    setStock(5);
   };
 
   return (

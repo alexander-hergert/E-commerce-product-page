@@ -8,6 +8,7 @@ export const AppProvider = ({ children }) => {
   const [isInCart, setIsInCart] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [activeTnNumber, setActiveTnNumber] = useState(0);
+  const [stock, setStock] = useState(5);
 
   return (
     <AppContext.Provider
@@ -22,6 +23,8 @@ export const AppProvider = ({ children }) => {
         setIsModal,
         activeTnNumber,
         setActiveTnNumber,
+        stock,
+        setStock,
       }}
     >
       {children}
