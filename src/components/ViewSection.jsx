@@ -62,29 +62,16 @@ const ViewSection = () => {
   };
 
   useEffect(() => {
-    document.body.querySelector("#tn1").classList.remove("active");
-    document.body.querySelector("#tn2").classList.remove("active");
-    document.body.querySelector("#tn3").classList.remove("active");
-    document.body.querySelector("#tn4").classList.remove("active");
+    //Choose thumbnail and add styles
     const url = "/assets/images/image-product-";
-    if (activeThumbnails.tn1 === true) {
-      document.body.querySelector("#tn1").classList.add("active");
-      imageRef.current.src = `${url}1.jpg`;
-      setActiveTnNumber(0);
-    } else if (activeThumbnails.tn2 === true) {
-      document.body.querySelector("#tn2").classList.add("active");
-      imageRef.current.src = `${url}2.jpg`;
-      setActiveTnNumber(1);
-    } else if (activeThumbnails.tn3 === true) {
-      document.body.querySelector("#tn3").classList.add("active");
-      imageRef.current.src = `${url}3.jpg`;
-      setActiveTnNumber(2);
-    } else if (activeThumbnails.tn4 === true) {
-      document.body.querySelector("#tn4").classList.add("active");
-      imageRef.current.src = `${url}4.jpg`;
-      setActiveTnNumber(3);
+    for (let i = 0; i < 4; i++) {
+      document.body.querySelector(`#tn${i + 1}`).classList.remove("active");
+      if (activeThumbnails[`tn${i + 1}`] === true) {
+        document.body.querySelector(`#tn${i + 1}`).classList.add("active");
+        imageRef.current.src = `${url}${i + 1}.jpg`;
+        setActiveTnNumber(i);
+      }
     }
-    console.log(activeThumbnails);
   }, [activeThumbnails]);
 
   return (
