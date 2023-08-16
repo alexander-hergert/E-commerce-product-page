@@ -12,23 +12,31 @@ const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 100;
 `;
 
 const Styles = styled.section`
   position: absolute;
-  width: 25%;
+  width: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
   .close {
     text-align: right;
+    margin-bottom: 1rem;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%)
+      hue-rotate(355deg) brightness(110%) contrast(101%);
     img {
       cursor: pointer;
       width: 1rem;
     }
+  }
+
+  .close:hover {
+    filter: brightness(0) saturate(100%) invert(71%) sepia(67%) saturate(4894%)
+      hue-rotate(347deg) brightness(102%) contrast(102%);
   }
 
   .slick-prev,
@@ -80,6 +88,17 @@ const Styles = styled.section`
       height: 3rem;
       border-radius: 5px;
     }
+    div:hover:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.75);
+      pointer-events: none;
+      border-radius: 5px;
+    }
   }
 
   .slick-prev:before {
@@ -88,13 +107,15 @@ const Styles = styled.section`
   .slick-next:before {
     content: url("/assets/images/icon-next.svg");
   }
+  .slick-prev:hover:before,
+  .slick-next:hover:before {
+    filter: brightness(0) saturate(100%) invert(71%) sepia(67%) saturate(4894%)
+      hue-rotate(347deg) brightness(102%) contrast(102%);
+  }
 
   img {
     width: 100%;
     border-radius: 15px;
-  }
-
-  @media screen and (min-width: 800px) {
   }
 `;
 /****************** COMPONENT ******************/

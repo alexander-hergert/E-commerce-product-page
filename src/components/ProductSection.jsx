@@ -11,6 +11,10 @@ const Styles = styled.section`
     font-size: 1rem;
   }
 
+  input:hover, button:hover {
+    opacity: 0.5;
+  }
+
   article {
     color: hsl(219, 9%, 45%);
     line-height: 1.5;

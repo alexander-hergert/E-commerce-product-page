@@ -22,6 +22,10 @@ const Styles = styled.section`
       cursor: pointer;
     }
 
+    img:hover {
+      opacity: 0.5;
+    }
+
     .active {
       opacity: 0.5;
       border: 2px solid hsl(26, 100%, 55%);

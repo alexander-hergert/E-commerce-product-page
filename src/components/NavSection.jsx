@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Links from "./Links";
+import LinksDesktop from "./LinksDesktop";
 import CheckOut from "./CheckOut";
 import { styled } from "styled-components";
 
@@ -19,6 +20,7 @@ const Styles = styled.nav`
   }
 
   @media screen and (min-width: 800px) {
+    height: 15vh;
     padding: 0 1rem;
     .left-nav-container {
       display: flex;
@@ -39,7 +41,6 @@ const NavSection = () => {
     setIsMenuOpen(true);
   };
 
-
   return (
     <Styles>
       <div className="left-nav-container">
@@ -53,9 +54,10 @@ const NavSection = () => {
           />
           <img src="/assets/images/logo.svg" alt="logo" />
         </div>
-        <Links isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
+        <LinksDesktop />
+        <Links isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </div>
-      <CheckOut/>
+      <CheckOut />
     </Styles>
   );
 };

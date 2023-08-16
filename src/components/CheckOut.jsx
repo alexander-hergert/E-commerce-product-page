@@ -7,6 +7,8 @@ import { useGlobalContext } from "../context";
 const Styles = styled.div`
   display: flex;
   align-items: center;
+  gap: 2rem;
+  position: relative;
 
   .cart-container {
     display: flex;
@@ -17,12 +19,12 @@ const Styles = styled.div`
     display: grid;
     place-items: center;
     background-color: hsl(26, 100%, 55%);
-    width: 1.5rem;
-    height: 1rem;
-    position: relative;
-    right: 1rem;
-    top: -0.75rem;
-
+    font-size: 0.75rem;
+    width: 1rem;
+    height: 0.75rem;
+    position: absolute;
+    bottom: 1.75rem;
+    left: 0.75rem;
     border-radius: 10px;
     color: white;
   }
@@ -31,8 +33,19 @@ const Styles = styled.div`
     width: 1.5rem;
   }
 
+  input:hover {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(6%) saturate(7476%)
+      hue-rotate(328deg) brightness(103%) contrast(106%);
+  }
+
   img {
     width: 2rem;
+    cursor: pointer;
+  }
+
+  img:hover {
+    border: 2px solid hsl(26, 100%, 55%);
+    border-radius: 50%;
   }
 
   @media screen and (min-width: 800px) {

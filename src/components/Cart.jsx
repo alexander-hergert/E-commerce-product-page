@@ -9,12 +9,12 @@ const Styles = styled.div`
   width: 25rem;
   height: 30vh;
   z-index: 20;
-  top: 10%;
+  top: 13%;
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 5px 10px hsl(220, 14%, 75%);
+  box-shadow: 0 10px 15px hsl(220, 14%, 75%);
 
   .cart {
     font-weight: bold;
@@ -37,6 +37,10 @@ const Styles = styled.div`
 
   .cart-container {
     padding: 1rem 2rem;
+  }
+
+  .empty-text {
+    font-weight: bold;
   }
 
   .cart-infos {
@@ -87,7 +91,7 @@ const Cart = () => {
           <div className="cart">Cart</div>
           {isInCart === false ? (
             <div className="empty-cart">
-              <p>Your cart is empty.</p>
+              <p className="empty-text">Your cart is empty.</p>
             </div>
           ) : (
             <div className="cart-container">
