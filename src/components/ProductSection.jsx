@@ -6,12 +6,15 @@ import { useGlobalContext } from "../context";
 
 const Styles = styled.section`
   padding: 1rem 1.5rem;
+
   h2 {
     color: hsl(26, 100%, 55%);
     font-size: 1rem;
+    text-transform: uppercase;
   }
 
-  input:hover, button:hover {
+  input:hover,
+  button:hover {
     opacity: 0.5;
   }
 
@@ -77,10 +80,12 @@ const Styles = styled.section`
     border-radius: 10px;
     border: none;
     margin-top: 1rem;
-    box-shadow: 0 15px 5px hsl(25, 100%, 94%);
+    box-shadow: 0 20px 15px hsl(25, 100%, 94%);
   }
 
   @media screen and (min-width: 800px) {
+    width: 40vw;
+
     .price-outer-container {
       display: block;
     }
@@ -94,9 +99,11 @@ const Styles = styled.section`
       display: flex;
       align-items: flex-end;
       gap: 1rem;
+      max-width: 35rem;
 
       .change-buttons-container {
         width: 30%;
+        min-width: 6rem;
       }
       .cart-button-container {
         width: 70%;

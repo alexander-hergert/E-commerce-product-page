@@ -7,10 +7,17 @@ import Caroussel from "./components/Caroussel";
 import Cart from "./components/Cart";
 
 const Main = styled.main`
+  padding-bottom: 10vh;
+
   @media screen and (min-width: 800px) {
     display: flex;
     align-items: center;
     gap: 2rem;
+    min-height: 80vh;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-top: 10vh;
   }
 `;
 

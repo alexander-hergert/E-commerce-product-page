@@ -6,10 +6,11 @@ import { useGlobalContext } from "../context";
 
 const Styles = styled.section`
   padding: 1rem;
+  width: 40vw;
 
   img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
   }
 
@@ -17,18 +18,28 @@ const Styles = styled.section`
     display: flex;
     margin-top: 1rem;
     justify-content: space-between;
-    img {
+
+    div {
+      max-width: 6rem;
       width: 20%;
       cursor: pointer;
+      img {
+        width: 100%;
+        pointer-events: none;
+      }
+    }
+
+    div.active {
+      border: 2px solid hsl(26, 100%, 55%);
+      border-radius: 10px;
+    }
+
+    div.active img {
+      opacity: 0.5;
     }
 
     img:hover {
       opacity: 0.5;
-    }
-
-    .active {
-      opacity: 0.5;
-      border: 2px solid hsl(26, 100%, 55%);
     }
   }
 
@@ -78,6 +89,7 @@ const ViewSection = () => {
     }
   }, [activeThumbnails]);
 
+  const thumbnails = [1, 2, 3, 4];
   return (
     <>
       <Styles>
@@ -88,30 +100,16 @@ const ViewSection = () => {
           onClick={handleModal}
         />
         <div>
-          <img
-            id="tn1"
-            src="assets/images/image-product-1-thumbnail.jpg"
-            alt="thumbnail-1"
-            onClick={handleThumbnail}
-          />
-          <img
-            id="tn2"
-            src="assets/images/image-product-2-thumbnail.jpg"
-            alt="thumbnail-2"
-            onClick={handleThumbnail}
-          />
-          <img
-            id="tn3"
-            src="assets/images/image-product-3-thumbnail.jpg"
-            alt="thumbnail-3"
-            onClick={handleThumbnail}
-          />
-          <img
-            id="tn4"
-            src="assets/images/image-product-4-thumbnail.jpg"
-            alt="thumbnail-4"
-            onClick={handleThumbnail}
-          />
+          {thumbnails.map((number) => {
+            return (
+              <div key={number} id={`tn${number}`} onClick={handleThumbnail}>
+                <img
+                  src={`assets/images/image-product-${number}-thumbnail.jpg`}
+                  alt={`thumbnail-${number}`}
+                />
+              </div>
+            );
+          })}
         </div>
       </Styles>
     </>

@@ -19,6 +19,7 @@ const ModalOverlay = styled.div`
 const Styles = styled.section`
   position: absolute;
   width: 50%;
+  max-width: 30rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -53,15 +54,16 @@ const Styles = styled.section`
     width: 90%;
     position: static;
     display: flex !important;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 4rem;
     margin-top: 1rem;
 
     .slick-active {
       position: relative;
       div {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 5px;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 10px;
         border: 1px solid hsl(26, 100%, 55%);
       }
 
@@ -74,7 +76,7 @@ const Styles = styled.section`
         height: 100%;
         background-color: rgba(255, 255, 255, 0.75);
         pointer-events: none;
-        border-radius: 5px;
+        border-radius: 10px;
       }
     }
   }
@@ -84,9 +86,9 @@ const Styles = styled.section`
       margin: 0;
     }
     div {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 5px;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 10px;
     }
     div:hover:after {
       content: "";
@@ -97,7 +99,7 @@ const Styles = styled.section`
       height: 100%;
       background-color: rgba(255, 255, 255, 0.75);
       pointer-events: none;
-      border-radius: 5px;
+      border-radius: 10px;
     }
   }
 
