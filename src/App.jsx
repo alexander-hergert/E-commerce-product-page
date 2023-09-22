@@ -12,8 +12,10 @@ const Main = styled.main`
   @media screen and (min-width: 800px) {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    gap: 5%;
     min-height: 80vh;
+    margin-top: 5vh;
   }
 
   @media screen and (min-width: 1200px) {

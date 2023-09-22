@@ -9,6 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 const Styles = styled.section`
   padding: 1rem 1.5rem;
 
+  h1{
+    font-size: 3rem;
+  }
+
   h2 {
     color: hsl(26, 100%, 55%);
     font-size: 1rem;
@@ -91,6 +95,7 @@ const Styles = styled.section`
 
   @media screen and (min-width: 800px) {
     width: 40vw;
+    min-width: 20rem;
 
     .price-outer-container {
       display: block;

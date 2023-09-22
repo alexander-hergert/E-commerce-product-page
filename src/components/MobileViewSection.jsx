@@ -30,6 +30,11 @@ const Styles = styled.div`
   .slick-next:before {
     content: url("/assets/images/icon-next.svg");
   }
+  .slick-prev:hover:before,
+  .slick-next:hover:before {
+    filter: brightness(0) saturate(100%) invert(71%) sepia(67%) saturate(4894%)
+      hue-rotate(347deg) brightness(102%) contrast(102%);
+  }
 
   img {
     width: 100%;

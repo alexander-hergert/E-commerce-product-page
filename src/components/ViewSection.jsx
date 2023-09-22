@@ -6,11 +6,12 @@ import { useGlobalContext } from "../context";
 
 const Styles = styled.section`
   padding: 1rem;
-  width: 40vw;
+  min-width: 20rem;
+  max-width: 35rem;
 
   img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 14px;
     cursor: pointer;
   }
 
@@ -31,7 +32,7 @@ const Styles = styled.section`
 
     div.active {
       border: 2px solid hsl(26, 100%, 55%);
-      border-radius: 10px;
+      border-radius: 16px;
     }
 
     div.active img {
